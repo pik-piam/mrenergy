@@ -1,2 +1,55 @@
-# mrenergy
-The package provides energy related data via the madrat framework.
+# the package provides energy related data via the madrat framework
+
+R package **mrenergy**, version **0.1.0**
+
+   [![R build status](https://github.com/pik-piam/mrenergy/workflows/check/badge.svg)](https://github.com/pik-piam/mrenergy/actions) [![codecov](https://codecov.io/gh/pik-piam/mrenergy/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrenergy) 
+
+## Purpose and Functionality
+
+Provides useful functions and a common structure to all the
+    input data required to run the REMIND of model input data.
+
+
+## Installation
+
+For installation of the most recent package version an additional repository has to be added in R:
+
+```r
+options(repos = c(CRAN = "@CRAN@", pik = "https://rse.pik-potsdam.de/r/packages"))
+```
+The additional repository can be made available permanently by adding the line above to a file called `.Rprofile` stored in the home folder of your system (`Sys.glob("~")` in R returns the home directory).
+
+After that the most recent version of the package can be installed using `install.packages`:
+
+```r
+install.packages("mrenergy")
+```
+
+Package updates can be installed using `update.packages` (make sure that the additional repository has been added before running that command):
+
+```r
+update.packages()
+```
+
+## Questions / Problems
+
+In case of questions / problems please contact Falk Benke <benke@pik-potsdam.de>.
+
+## Citation
+
+To cite package **mrenergy** in publications use:
+
+Benke F (2026). "mrenergy: the package provides energy related data via the madrat framework." Version: 0.1.0, <https://github.com/pik-piam/mrenergy>.
+
+A BibTeX entry for LaTeX users is
+
+ ```latex
+@Misc{,
+  title = {mrenergy: the package provides energy related data via the madrat framework},
+  author = {Falk Benke},
+  date = {2026-05-21},
+  year = {2026},
+  url = {https://github.com/pik-piam/mrenergy},
+  note = {Version: 0.1.0},
+}
+```
