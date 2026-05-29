@@ -3,7 +3,7 @@ message: If you use this software, please cite it using the metadata from this f
 type: software
 title: 'mrenergy: the package provides energy related data via the madrat framework'
 version: 0.1.0
-date-released: '2026-05-21'
+date-released: '2026-05-29'
 abstract: Provides useful functions and a common structure to all the input data required
   to run the REMIND of model input data.
 authors:

@@ -47,7 +47,7 @@ A BibTeX entry for LaTeX users is
 @Misc{,
   title = {mrenergy: the package provides energy related data via the madrat framework},
   author = {Falk Benke},
-  date = {2026-05-21},
+  date = {2026-05-29},
   year = {2026},
   url = {https://github.com/pik-piam/mrenergy},
   note = {Version: 0.1.0},

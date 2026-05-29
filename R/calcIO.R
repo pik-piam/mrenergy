@@ -21,6 +21,7 @@
 #' }
 #'
 #' @importFrom dplyr filter mutate
+#' @importFrom mrenergycore toolGetIEAYear
 calcIO <- function(subtype = c("input", "output", "trade"),
                    ieaVersion = "default", corrected = FALSE) {
 

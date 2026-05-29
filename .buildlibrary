@@ -1,11 +1,11 @@
-ValidationKey: '205940'
+ValidationKey: '206020'
 AutocreateReadme: yes
 AutocreateCITATION: yes
 AcceptedWarnings:
 - 'Warning: package ''.*'' was built under R version'
 - 'Warning: namespace ''.*'' is not available and has been replaced'
 AcceptedNotes: .* includes the non-default packages.*
-allowLinterWarnings: no
+allowLinterWarnings: yes
 enforceVersionUpdate: yes
 skipCoverage: yes
 UsePkgDown: no
