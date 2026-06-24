@@ -1,2 +1,54 @@
-# mrenergy
-The package provides energy related data via the madrat framework.
+# Preprocessing functions for REMIND and other energy models using landuse data
+
+R package **mrenergy**, version **0.1.1**
+
+   [![R build status](https://github.com/pik-piam/mrenergy/workflows/check/badge.svg)](https://github.com/pik-piam/mrenergy/actions) [![codecov](https://codecov.io/gh/pik-piam/mrenergy/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrenergy) 
+
+## Purpose and Functionality
+
+Preprocessing functions for REMIND and other energy models (buildings, transport, industry) using landuse data.
+
+
+## Installation
+
+For installation of the most recent package version an additional repository has to be added in R:
+
+```r
+options(repos = c(CRAN = "@CRAN@", pik = "https://rse.pik-potsdam.de/r/packages"))
+```
+The additional repository can be made available permanently by adding the line above to a file called `.Rprofile` stored in the home folder of your system (`Sys.glob("~")` in R returns the home directory).
+
+After that the most recent version of the package can be installed using `install.packages`:
+
+```r
+install.packages("mrenergy")
+```
+
+Package updates can be installed using `update.packages` (make sure that the additional repository has been added before running that command):
+
+```r
+update.packages()
+```
+
+## Questions / Problems
+
+In case of questions / problems please contact Falk Benke <benke@pik-potsdam.de>.
+
+## Citation
+
+To cite package **mrenergy** in publications use:
+
+Benke F (2026). "mrenergy: Preprocessing functions for REMIND and other energy models using landuse data." Version: 0.1.1, <https://github.com/pik-piam/mrenergy>.
+
+A BibTeX entry for LaTeX users is
+
+ ```latex
+@Misc{,
+  title = {mrenergy: Preprocessing functions for REMIND and other energy models using landuse data},
+  author = {Falk Benke},
+  date = {2026-06-24},
+  year = {2026},
+  url = {https://github.com/pik-piam/mrenergy},
+  note = {Version: 0.1.1},
+}
+```

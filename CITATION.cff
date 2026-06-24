@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using the metadata from this file.
+type: software
+title: 'mrenergy: Preprocessing functions for REMIND and other energy models using
+  landuse data'
+version: 0.1.1
+date-released: '2026-06-24'
+abstract: Preprocessing functions for REMIND and other energy models (buildings, transport,
+  industry) using landuse data.
+authors:
+- family-names: Benke
+  given-names: Falk
+  email: benke@pik-potsdam.de
+license: LGPL-3.0
+repository-code: https://github.com/pik-piam/mrenergy
+
