@@ -2,7 +2,7 @@
 #' @author Lavinia Baumstark, Aman Malik
 #' @param ieaVersion Release version of IEA data, either 'default' (vetted and used in REMIND)
 #' or 'latest'.
-#' @importFrom mrenergycore toolGetIEAYear
+#' @importFrom mrcommonsenergy toolGetIEAYear
 calcFE <- function(ieaVersion = "default") {
   #------ READ-IN DATA----------------------------------------
 

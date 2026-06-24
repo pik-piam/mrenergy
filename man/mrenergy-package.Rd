@@ -4,9 +4,9 @@
 \name{mrenergy-package}
 \alias{mrenergy}
 \alias{mrenergy-package}
-\title{mrenergy: the package provides energy related data via the madrat framework}
+\title{mrenergy: Preprocessing functions for REMIND and other energy models using landuse data}
 \description{
-Provides useful functions and a common structure to all the input data required to run the REMIND of model input data.
+Preprocessing functions for REMIND and other energy models (buildings, transport, industry) using landuse data.
 }
 \seealso{
 Useful links:

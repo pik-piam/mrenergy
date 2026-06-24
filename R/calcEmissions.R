@@ -3,7 +3,7 @@
 #' @return magpie object with historical emissions
 #' @param datasource "CEDS2REMIND", "CEDS2025", "EDGAR6",
 #'                   "EDGARghg", "CDIAC", "ClimateTrace"
-#' @importFrom mrenergycore toolAggregateCustomRegs
+#' @importFrom mrcommonsenergy toolAggregateCustomRegs
 #' @author Steve Smith, Pascal Weigmann
 #'
 calcEmissions <- function(datasource = "CEDS16") {
