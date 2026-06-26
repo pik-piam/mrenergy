@@ -3,8 +3,8 @@ message: If you use this software, please cite it using the metadata from this f
 type: software
 title: 'mrenergy: Preprocessing functions for REMIND and other energy models using
   landuse data'
-version: 0.1.1
-date-released: '2026-06-24'
+version: 0.1.2
+date-released: '2026-06-26'
 abstract: Preprocessing functions for REMIND and other energy models (buildings, transport,
   industry) using landuse data.
 authors:
