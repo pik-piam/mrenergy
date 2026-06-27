@@ -39,7 +39,7 @@ calcIO <- function(subtype = c("input", "output", "trade"),
     output = {
       mapping <- toolGetMapping(type = "sectoral",
                                 name = "structuremappingIO_outputs.csv",
-                                where = "mrenergy",
+                                where = "mrcommonsenergy",
                                 returnPathOnly = TRUE)
       target <- c("REMINDitems_in", "REMINDitems_out", "REMINDitems_tech")
     },

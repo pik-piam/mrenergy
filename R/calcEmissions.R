@@ -57,7 +57,7 @@ calcEmissions <- function(datasource = "CEDS16") {
     map_CEDS59_to_REMIND <-
       toolGetMapping(type = "sectoral",
                      name = "mappingCEDS59toREMINDreporting.csv",
-                     where = "mappingfolder")
+                     where = "mrenergy")
     emi <-
       toolAggregate(
         x = emi,
@@ -164,7 +164,7 @@ calcEmissions <- function(datasource = "CEDS16") {
     # load mapping file
     map <- toolGetMapping(type = "sectoral",
                           name = "mappingCEDS2025toREMIND.csv",
-                          where = "mrremind")
+                          where = "mrenergy")
 
     # load sectoral mapping, depending on the selected output sectoral
     # resolution
@@ -463,7 +463,7 @@ calcEmissions <- function(datasource = "CEDS16") {
     # variable mapping
     map <- toolGetMapping(type = "sectoral",
                           name = "mappingCMIP7_CEDS.csv",
-                          where = "mrremind")
+                          where = "mrenergy")
     emi <- toolAggregate(emi, map, dim = 3.2,
                          from = "CMIP7_CEDS", to = "REMIND", partrel = TRUE)
 
@@ -594,7 +594,7 @@ calcEmissions <- function(datasource = "CEDS16") {
     map_sec <-
       toolGetMapping("mappingEDGAR6toREMIND.csv",
                      type = "sectoral",
-                     where = "mappingfolder")
+                     where = "mrenergy")
     map_pol <- c(
       n2o = "N2O",
       ch4 = "CH4",
@@ -713,7 +713,7 @@ calcEmissions <- function(datasource = "CEDS16") {
     map_sec <-
       toolGetMapping("mappingEDGAR8toREMIND.csv",
                      type = "sectoral",
-                     where = "mrremind")
+                     where = "mrenergy")
     emi <- toolAggregate(
       emi,
       dim = 3.2,
@@ -941,7 +941,7 @@ calcEmissions <- function(datasource = "CEDS16") {
     # map variables
     mapping <- toolGetMapping("mappingClimateTrace.csv",
                               type = "sectoral",
-                              where = "mrremind")
+                              where = "mrenergy")
     emi <- toolAggregate(
       emi,
       dim = 3.2,
