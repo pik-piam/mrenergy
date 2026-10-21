@@ -12,3 +12,5 @@
 ^_pkgdown\.yml$
 ^.*CITATION.cff$
 ^tests/.lintr$
+^CODE_STYLE\.md$
+^CONTRIBUTING\.md$

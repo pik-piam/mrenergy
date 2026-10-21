@@ -12,7 +12,6 @@ pebiolc.sesobio.biotrmod;PE|Biomass|Solids;SE|Solids|Biomass
 pecoal.seel.coalchp;PE|Coal|CHP;SE|Electricity|Coal|CHP
 pecoal.seel.d_coal2elec;PE|Coal|Electricity|Loss;
 pecoal.seel.pc;PE|Coal|Electricity;SE|Electricity|Coal|nonCHP
-pecoal.segafos.coalgas;PE|Coal|Gases;SE|Gases|Fossil|Coal
 pecoal.sehe.coalchp;;SE|Heat|Coal|CHP
 pecoal.sehe.coalhp;PE|Coal|Heat;SE|Heat|Coal|HP
 pecoal.sesofos.coaltr;PE|Coal|Solids;SE|Solids|Coal

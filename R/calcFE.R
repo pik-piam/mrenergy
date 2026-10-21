@@ -18,29 +18,26 @@ calcFE <- function(ieaVersion = "default") {
   )
 
   map <- utils::read.csv2(mapping, stringsAsFactors = FALSE, na.strings = "")
+
   # delete NAs rows
   map <- map[c("io", "output")] %>% stats::na.omit()
 
   # Change the column name of the mapping
-  colnames(map) <- gsub("io", "names_in", colnames(map))
-
-  # Give description
-  descript <- paste0(
-    "IEA Final Energy Data based on ",
-    toolGetIEAYear(ieaVersion),
-    " version of IEA Energy Balances"
-  )
+  colnames(map)[1] <- "names_in"
 
   #------ PROCESS DATA ------------------------------------------
   # select data that have names
+
   x <- data[, , map$names_in]
+
   # rename entries of data to match the reporting names
   getNames(x) <- paste0(map$output, " (EJ/yr)")
 
-
   # aggregate CHP and nonCHP electricity
+
   x <- mbind(x, setNames(x[, , "SE|Electricity|Coal|CHP (EJ/yr)"] +
                            x[, , "SE|Electricity|Coal|nonCHP (EJ/yr)"], "SE|Electricity|Coal (EJ/yr)"))
+
   x <- mbind(x, setNames(x[, , "SE|Electricity|Gas|CHP (EJ/yr)"] +
                            x[, , "SE|Electricity|Gas|nonCHP (EJ/yr)"], "SE|Electricity|Gas (EJ/yr)"))
   x <- mbind(x, setNames(x[, , "SE|Electricity|Biomass|CHP (EJ/yr)"] +
@@ -382,9 +379,12 @@ calcFE <- function(ieaVersion = "default") {
   x <- mbind(x, setNames(x[, , "FE|Transport|Liquids (EJ/yr)"], "FE|Transport with bunkers|Liquids (EJ/yr)"))
   x <- mbind(x, setNames(x[, , "FE|Transport|Solids (EJ/yr)"], "FE|Transport with bunkers|Solids (EJ/yr)"))
 
-
   return(list(
     x = x, weight = NULL, unit = "EJ",
-    description = descript
+    description = paste0(
+      "IEA Final Energy Data based on ",
+      toolGetIEAYear(ieaVersion),
+      " version of IEA Energy Balances"
+    )
   ))
 }

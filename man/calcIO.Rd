@@ -30,12 +30,6 @@ and a mapping that corresponds to the structure of "products" and "flows" of IEA
 Mapping structure example: IEA product ANTCOAL used for IEA flow TPATFUEL, contributes via REMIND technology
 coaltr for generating sesofos from pecoal (REMIND names)
 }
-\examples{
-\dontrun{
-a <- calcOutput("IO", subtype = "output")
-}
-
-}
 \author{
-Anastasis Giannousakis
+Anastasis Giannousakis, Falk Benke
 }
