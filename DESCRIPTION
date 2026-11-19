@@ -1,8 +1,8 @@
 Type: Package
 Package: mrenergy
 Title: Preprocessing functions for REMIND and other energy models using landuse data
-Version: 0.2.0
-Date: 2026-10-21
+Version: 0.3.0
+Date: 2026-11-17
 Authors@R: c(
     person("Falk", "Benke", , "benke@pik-potsdam.de", role = c("aut", "cre")),
     person("Robin", "Hasse", role = "aut"),

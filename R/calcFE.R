@@ -3,12 +3,12 @@
 #' @param ieaVersion Release version of IEA data, either 'default' (vetted and used in REMIND)
 #' or 'latest'.
 #' @importFrom mrcommonsenergy toolGetIEAYear
+#' @importFrom dplyr left_join select filter
 calcFE <- function(ieaVersion = "default") {
-  #------ READ-IN DATA----------------------------------------
 
-  data <- calcOutput("IO",
-                     subtype = "output", corrected = TRUE,
-                     ieaVersion = ieaVersion, aggregate = FALSE
+  x <- calcOutput("IO",
+    subtype = "output", corrected = TRUE,
+    ieaVersion = ieaVersion, aggregate = FALSE
   )
 
   mapping <- toolGetMapping(
@@ -17,21 +17,22 @@ calcFE <- function(ieaVersion = "default") {
     where = "mrenergy", returnPathOnly = TRUE
   )
 
-  map <- utils::read.csv2(mapping, stringsAsFactors = FALSE, na.strings = "")
+  # TODO: fix outdated mappings once we drop support for IEA 2024
+  map <- utils::read.csv2(mapping, stringsAsFactors = FALSE, na.strings = "") %>%
+    select("io", "output") %>%
+    filter(!is.na(.data$output))
 
-  # delete NAs rows
-  map <- map[c("io", "output")] %>% stats::na.omit()
+  if (length(setdiff(map$io, getNames(x))) > 0) {
+    message(paste0("outdated mappings in FE reporting", paste0(setdiff(map$io, getNames(x)), collapse = ", ")))
+  }
 
-  # Change the column name of the mapping
-  colnames(map)[1] <- "names_in"
+  map <- map %>%
+    filter(.data$io %in% getNames(x)) %>%
+    mutate("output" = paste0(.data$output, " (EJ/yr)"))
 
-  #------ PROCESS DATA ------------------------------------------
-  # select data that have names
+  x <- toolAggregate(x[, , unique(map$io)], rel = map, dim = 3, from = "io", to = "output")
 
-  x <- data[, , map$names_in]
-
-  # rename entries of data to match the reporting names
-  getNames(x) <- paste0(map$output, " (EJ/yr)")
+  getSets(x)  <- c("region", "period", "variable")
 
   # aggregate CHP and nonCHP electricity
 
@@ -50,18 +51,6 @@ calcFE <- function(ieaVersion = "default") {
                            x[, , "SE|Heat|Gas|HP (EJ/yr)"], "SE|Heat|Gas (EJ/yr)"))
   x <- mbind(x, setNames(x[, , "SE|Heat|Biomass|CHP (EJ/yr)"] +
                            x[, , "SE|Heat|Biomass|HP (EJ/yr)"], "SE|Heat|Biomass (EJ/yr)"))
-
-  # rename Diesel/Petrol to LDV/non-LDV
-  x <- mbind(x, setNames(x[, , "FE|Transport|Liquids|Diesel|Biomass (EJ/yr)"], "FE|Transport|non-LDV|Liquids|Biomass (EJ/yr)"))
-  x <- mbind(x, setNames(x[, , "FE|Transport|Liquids|Diesel|Fossil (EJ/yr)"], "FE|Transport|non-LDV|Liquids|Fossil (EJ/yr)"))
-  x <- mbind(x, setNames(x[, , "FE|Transport|Liquids|Petrol|Biomass (EJ/yr)"], "FE|Transport|LDV|Liquids|Biomass (EJ/yr)"))
-  x <- mbind(x, setNames(x[, , "FE|Transport|Liquids|Petrol|Fossil (EJ/yr)"], "FE|Transport|LDV|Liquids|Fossil (EJ/yr)"))
-  x <- x[, , c(
-    "FE|Transport|Liquids|Diesel|Biomass (EJ/yr)",
-    "FE|Transport|Liquids|Diesel|Fossil (EJ/yr)",
-    "FE|Transport|Liquids|Petrol|Biomass (EJ/yr)",
-    "FE|Transport|Liquids|Petrol|Fossil (EJ/yr)"
-  ), invert = TRUE]
 
   # aggregate LDV and non-LDV to Liquids|Biomass/Fossil
   x <- mbind(x, setNames(x[, , "FE|Transport|LDV|Liquids|Biomass (EJ/yr)"] +
@@ -160,8 +149,13 @@ calcFE <- function(ieaVersion = "default") {
                            x[, , "FE|Transport|Pipeline|Liquids|Petrol|Fossil (EJ/yr)"], "FE|Transport|Pipeline|Liquids|Fossil (EJ/yr)"))
   x <- mbind(x, setNames(x[, , "FE|Transport|Pipeline|Liquids|Fossil (EJ/yr)"], "FE|Transport|Pipeline|Liquids (EJ/yr)"))
 
-  x <- mbind(x, setNames(x[, , "FE|Transport|Pipeline|Gases|Fossil (EJ/yr)"] +
-                           x[, , "FE|Transport|Pipeline|Gases|Biomass (EJ/yr)"], "FE|Transport|Pipeline|Gases (EJ/yr)"))
+  # TODO: fix missing data for "FE|Transport|Pipeline|Gases|Biomass (EJ/yr)"
+  if (!"FE|Transport|Pipeline|Gases|Biomass (EJ/yr)" %in% getNames(x)) {
+    x <- mbind(x, setNames(x[, , "FE|Transport|Pipeline|Gases|Fossil (EJ/yr)"], "FE|Transport|Pipeline|Gases (EJ/yr)"))
+  } else {
+    x <- mbind(x, setNames(x[, , "FE|Transport|Pipeline|Gases|Fossil (EJ/yr)"] +
+                             x[, , "FE|Transport|Pipeline|Gases|Biomass (EJ/yr)"], "FE|Transport|Pipeline|Gases (EJ/yr)"))
+  }
 
   x <- mbind(x, setNames(x[, , "FE|Transport|Pipeline|Gases (EJ/yr)"] + x[, , "FE|Transport|Pipeline|Liquids (EJ/yr)"] +
                            x[, , "FE|Transport|Pipeline|Electricity (EJ/yr)"], "FE|Transport|Pipeline (EJ/yr)"))

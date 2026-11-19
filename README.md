@@ -1,6 +1,6 @@
 # Preprocessing functions for REMIND and other energy models using landuse data
 
-R package **mrenergy**, version **0.2.0**
+R package **mrenergy**, version **0.3.0**
 
    [![R build status](https://github.com/pik-piam/mrenergy/workflows/check/badge.svg)](https://github.com/pik-piam/mrenergy/actions) [![codecov](https://codecov.io/gh/pik-piam/mrenergy/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrenergy) [![r-universe](https://pik-piam.r-universe.dev/badges/mrenergy)](https://pik-piam.r-universe.dev/builds)
 
@@ -38,7 +38,7 @@ In case of questions / problems please contact Falk Benke <benke@pik-potsdam.de>
 
 To cite package **mrenergy** in publications use:
 
-Benke F, Hasse R, Weigmann P (2026). "mrenergy: Preprocessing functions for REMIND and other energy models using landuse data." Version: 0.2.0, <https://github.com/pik-piam/mrenergy>.
+Benke F, Hasse R, Weigmann P (2026). "mrenergy: Preprocessing functions for REMIND and other energy models using landuse data." Version: 0.3.0, <https://github.com/pik-piam/mrenergy>.
 
 A BibTeX entry for LaTeX users is
 
@@ -46,9 +46,9 @@ A BibTeX entry for LaTeX users is
 @Misc{,
   title = {mrenergy: Preprocessing functions for REMIND and other energy models using landuse data},
   author = {Falk Benke and Robin Hasse and Pascal Weigmann},
-  date = {2026-10-21},
+  date = {2026-11-17},
   year = {2026},
   url = {https://github.com/pik-piam/mrenergy},
-  note = {Version: 0.2.0},
+  note = {Version: 0.3.0},
 }
 ```
