@@ -10,6 +10,7 @@ import(mrdrivers)
 importFrom(dplyr,
   bind_rows,
   filter,
+  left_join,
   mutate,
   select
 )

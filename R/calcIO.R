@@ -51,7 +51,7 @@ calcIO <- function(subtype = c("input", "output", "trade"),
          }
   )
 
-  if (!(ieaVersion %in% c("default", "latest"))) {
+  if (!(ieaVersion %in% c("default", "latest", "EnergyBalances-2025"))) {
     stop("Invalid parameter `ieaVersion`. Must be either 'default' or 'latest'")
   }
 
